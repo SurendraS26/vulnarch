@@ -2,7 +2,7 @@
 set -e
 
 # Don't touch this unless you know what your doing!
-export XDG_RUMTIME_DIR=/tmp/runtime-vulnarch
+export XDG_RUNTIME_DIR=/tmp/runtime-vulnarch
 mkdir -p "$XDG_RUNTIME_DIR"
 chmod 700 "$XDG_RUNTIME_DIR"
 
@@ -13,4 +13,4 @@ su - vulnarch -c "startplasma-wayland" &
 sleep 5
 
 # Vulnerable VNC Server Desktop (plasma-desktop)
-su - vulnarch -c "wayvnc -C config/wayvnc/config"
+su - vulnarch -c "wayvnc -C /config/wayvnc/config"
