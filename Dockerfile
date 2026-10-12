@@ -1,10 +1,10 @@
 FROM archlinux:latest
 RUN pacman -Syu --noconfirm --needed \
-      tigervnc \
-      plasma-desktop plasma-x11-session kwin-x11 konsole dolphin \
-      xorg-xauth xorg-xrdb ttf-dejavu dbus \
+      wayvnc \
+      plasma-desktop chromium konsole dolphin \
+      ttf-dejavu dbus \
     && pacman -Scc --noconfirm
-RUN useradd -m user
+RUN useradd -m vulnarch
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 EXPOSE 5901
