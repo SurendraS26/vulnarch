@@ -1,10 +1,11 @@
 FROM archlinux:latest
 RUN pacman -Syu --noconfirm --needed \
-      wayvnc \
+      tigervnc \
       plasma-desktop chromium konsole dolphin \
-      ttf-dejavu dbus \
+      ttf-dejavu dbus xorg-xauth xorg-xrdb \
     && pacman -Scc --noconfirm
 RUN useradd -m vulnarch
+RUN echo "vulnarch:vulnarch" | chpasswd
 COPY config /config
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
