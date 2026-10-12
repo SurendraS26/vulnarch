@@ -1,0 +1,7 @@
+services:
+  vulnarch:
+    build: .
+    container_name: vulnarch
+    ports:
+      - "5901:5901"
+    restart: unless-stopped
