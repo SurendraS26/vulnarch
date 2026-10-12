@@ -5,6 +5,7 @@ RUN pacman -Syu --noconfirm --needed \
       ttf-dejavu dbus \
     && pacman -Scc --noconfirm
 RUN useradd -m vulnarch
+COPY config /config
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 EXPOSE 5901
