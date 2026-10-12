@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
-# Don't touch this unless you know what your doing!
-export XDG_RUNTIME_DIR=/tmp/runtime-vulnarch
-mkdir -p "$XDG_RUNTIME_DIR"
-chmod 700 "$XDG_RUNTIME_DIR"
+mkdir -p /home/vulnarch/.vnc
+chown -R vulnarch:vulnarch /home/vulnarch/.vnc
 
-# Start the plasma desktop (can be accessed using the same vulnerable VNC)
-su - vulnarch -c "startplasma-wayland" &
+echo "vulnarch" | vncpasswd -f > /home/vulnarch/.vnc/passwd
+chown vulnarch:vulnarch /home/vulnarch/.vnc/passwd
+chmod 600 /home/vulnarch/.vnc/passwd
 
-# Wait 5 second's after starting the desktop
-sleep 5
-
-# Vulnerable VNC Server Desktop (plasma-desktop)
-su - vulnarch -c "wayvnc -C /config/wayvnc/config"
+su - vulnarch -c "vncserver :1 -geometry 1280x720 -depth 24 -localhost no"
+tail -f /home/vulnarch/.vnc/*.log
