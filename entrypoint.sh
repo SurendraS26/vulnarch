@@ -2,9 +2,9 @@
 set -e
 
 # Don't touch this unless you know what your doing!
-export XDG_RUMTIME_DIR=/tpm/runtime-vulnarch
-mkdir -p "XDG_RUNTIME_DIR"
-chmod 700 "XDG_RUNTIME_DIR"
+export XDG_RUMTIME_DIR=/tmp/runtime-vulnarch
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod 700 "$XDG_RUNTIME_DIR"
 
 # Start the plasma desktop (can be accessed using the same vulnerable VNC)
 su - vulnarch -c "startplasma-wayland" &
