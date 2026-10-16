@@ -1,6 +1,0 @@
-services:
-  vulnarch:
-    build: .
-    ports:
-      - "5901:5901"
-    restart: unless-stopped
